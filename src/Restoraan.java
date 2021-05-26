@@ -1,5 +1,5 @@
 public class Restoraan {
-    private String restoNimi;
+    private static String restoNimi;
     private String sook;
 
     Restoraan(String restoNimi, String sook){
@@ -7,7 +7,7 @@ public class Restoraan {
         this.sook = sook;
     }
     static void avaResto(){
-        System.out.println("Restoran on avatud");
+        System.out.println(restoNimi + " on avatud");
     }
     public static void main(String[] args){
         avaResto();
