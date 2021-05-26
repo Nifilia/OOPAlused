@@ -1,18 +1,24 @@
 import java.util.Scanner;
 
 public class Test {
+    static String banner(String reklaamlause) {
+        String reklaamlauseSuurteTahtedega = reklaamlause.toUpperCase();
+        return reklaamlauseSuurteTahtedega;
+    }
     public static void main(String[] args) {
         Scanner sisend = new Scanner(System.in);
-        System.out.println("Täringute arv: ");
+        System.out.println("Mitu korda kuvada reklaamlauset: ");
 
-        int taringuteArv = sisend.nextInt();
+        int kordamine = sisend.nextInt();
 
-        while(true){
-            int taring = (int)Math.round(Math.random() * 6);
-            System.out.println(taring);
-            if(taring == taringuteArv){
-                break;
-            }
+        sisend = new Scanner(System.in);
+        System.out.println("Sisesta reklaamlause: ");
+        String lause = sisend.nextLine();
+
+        int kord = 1;
+        while(kord <= kordamine) {
+            System.out.println(banner(lause));
+            kord++;
         }
     }
 }
