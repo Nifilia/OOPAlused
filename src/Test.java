@@ -1,24 +1,16 @@
 import java.util.Scanner;
 
 public class Test {
-    static String banner(String reklaamlause) {
-        String reklaamlauseSuurteTahtedega = reklaamlause.toUpperCase();
-        return reklaamlauseSuurteTahtedega;
+    static int mahlapakkidearv(double ounteKogus) {
+        int pakkidArv = (int)Math.round(ounteKogus * 0.4 / 3);
+        return pakkidArv;
     }
     public static void main(String[] args) {
         Scanner sisend = new Scanner(System.in);
-        System.out.println("Mitu korda kuvada reklaamlauset: ");
+        System.out.println("Sisesta õunte kogus kilogrammides: ");
 
-        int kordamine = sisend.nextInt();
+        double ountekogus = sisend.nextDouble();
 
-        sisend = new Scanner(System.in);
-        System.out.println("Sisesta reklaamlause: ");
-        String lause = sisend.nextLine();
-
-        int kord = 1;
-        while(kord <= kordamine) {
-            System.out.println(banner(lause));
-            kord++;
-        }
+        System.out.println(mahlapakkidearv(ountekogus));
     }
 }
