@@ -6,11 +6,13 @@ public class Test {
         System.out.println("Täringute arv: ");
 
         int taringuteArv = sisend.nextInt();
-        int taring = (int)Math.round(Math.random() * 6);
-        System.out.println(taring);
-        while(taring != taringuteArv){
-            taring = (int)Math.round(Math.random() * 6);
+
+        while(true){
+            int taring = (int)Math.round(Math.random() * 6);
             System.out.println(taring);
+            if(taring == taringuteArv){
+                break;
+            }
         }
     }
 }
