@@ -1,39 +1,44 @@
-import java.io.File;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args){
-        ArrayList<String> opilased = new ArrayList<>();
-        File fail = new File("C:\\Users\\Andero\\IdeaProjects\\oop_alused\\OOPAlused\\src\\nimekiri.txt");
-        Scanner sisendFailist = null;
-        try {
-            sisendFailist = new Scanner(fail);
-        } catch (Exception e){
-            System.out.println("Faili pole - " + e.getMessage());
+        ArrayList<String> teemad = new ArrayList<>();
+        teemad.add("OOP");
+        teemad.add("Pärilus");
+        teemad.add("Kapseldus");
+        teemad.add("Kompositsioon");
+        Opetaja opetaja = new Opetaja("Anna");
+
+        ArrayList<Opilane> ita20 = new ArrayList<>();
+        Opilane henri = new Opilane("Henri");
+        Opilane karl = new Opilane("Karl");
+        ita20.add(henri);
+        ita20.add(karl);
+
+        oppetoo(teemad, ita20, opetaja);
+
+        teadmisteKontroll(ita20);
+        henri.unusta("Kapseldus");
+        teadmisteKontroll(ita20);
+        henri.opib("Kapseldus");
+        teadmisteKontroll(ita20);
+    }
+
+    public static void teadmisteKontroll(ArrayList<Opilane> grupp){
+        for (Opilane opilane : grupp){
+            System.out.println("Opilane " + opilane.getNimi() + " teadmised: ");
+            for (String teadmine : opilane.getTeadmised()){
+                System.out.println(teadmine);
+            }
+            System.out.println();
         }
+    }
 
-        while (sisendFailist.hasNextLine()){
-            String rida = sisendFailist.nextLine();
-            opilased.add(rida);
+    public static void oppetoo(ArrayList<String> teemad, ArrayList<Opilane> grupp, Opetaja opetaja){
+        for (String teema : teemad){
+            for (Opilane opilane : grupp){
+                opetaja.opetab(opilane, teema);
+            }
         }
-        sisendFailist.close();
-
-        LocalDateTime tananeKuupaev = LocalDateTime.now();
-        System.out.println("Tänane kuupäev ilma vormistuseta on: " + tananeKuupaev);
-        DateTimeFormatter kuupaevaVormindus = DateTimeFormatter.ofPattern("dd/MM/yyy HH:MM:ss");
-        String tananeKuupaevVormistatud = tananeKuupaev.format(kuupaevaVormindus);
-        System.out.println("tänane vormistatud kuupäev on: " + tananeKuupaevVormistatud);
-
-        int indeks = Integer.parseInt(tananeKuupaevVormistatud);
-        System.out.println(opilased.get(indeks - 1));
-        /*
-        for (int i = 0; i < opilased.size(); i++){
-            System.out.println(i + " " + opilased.get(i));
-        }
-
-         */
     }
 }
