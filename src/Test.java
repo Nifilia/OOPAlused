@@ -1,21 +1,19 @@
 public class Test {
     public static void main(String[] args) {
-        Inimene mati = new Inimene("Mati");
-        mati.setPikkus(1.80);
-        mati.setMass(149.0);
-        System.out.println(mati.getNimi() + " on " + mati.getPikkus() + "m pikk ja kaalub " + mati.getMass() + " kg");
-        System.out.println("kmi = " + mati.kmi());
-        System.out.printf("kmi = %.2f\n", mati.kmi());
+        Sein seinPohi = new Sein("Põhi sein");
+        Sein seinLouna = new Sein("Lõuna sein");
+        Sein seinLaane = new Sein("Laane sein");
+        Sein seinIda = new Sein("Ida sein");
 
-        mati.suurendaKaal();
-        System.out.println(mati.getNimi() + " on " + mati.getPikkus() + "m pikk ja kaalub " + mati.getMass() + " kg");
+        Lagi lagi = new Lagi(2.5, "Helesinine");
 
-        mati.suurendaKaal(5.0);
-        System.out.println(mati.getNimi() + " on " + mati.getPikkus() + "m pikk ja kaalub " + mati.getMass() + " kg");
-        System.out.printf("kmi = %.2f\n", mati.kmi());
+        Voodi voodi = new Voodi("Kahele", 2, 2, 1, 70);
 
-        mati.normaalKaal();
-        System.out.println(mati.getNimi() + " on " + mati.getPikkus() + "m pikk ja kaalub " + mati.getMass() + " kg");
-        System.out.printf("kmi = %.2f\n", mati.kmi());
+        Lamp lamp = new Lamp("Klassikaline", false);
+
+        Magamistuba magamistuba = new Magamistuba("Külaliste magamistuba", seinPohi, seinLouna, seinLouna, seinIda, lagi, voodi, lamp);
+        magamistuba.valmistaVoodi();
+        magamistuba.valmistaLamp();
+        System.out.println(magamistuba.getLamp().isSisseLulitatud());
     }
 }
