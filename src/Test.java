@@ -1,44 +1,21 @@
-import java.util.ArrayList;
-
 public class Test {
-    public static void main(String[] args){
-        ArrayList<String> teemad = new ArrayList<>();
-        teemad.add("OOP");
-        teemad.add("Pärilus");
-        teemad.add("Kapseldus");
-        teemad.add("Kompositsioon");
-        Opetaja opetaja = new Opetaja("Anna");
+    public static void main(String[] args) {
+        Inimene mati = new Inimene("Mati");
+        mati.setPikkus(1.80);
+        mati.setMass(149.0);
+        System.out.println(mati.getNimi() + " on " + mati.getPikkus() + "m pikk ja kaalub " + mati.getMass() + " kg");
+        System.out.println("kmi = " + mati.kmi());
+        System.out.printf("kmi = %.2f\n", mati.kmi());
 
-        ArrayList<Opilane> ita20 = new ArrayList<>();
-        Opilane henri = new Opilane("Henri");
-        Opilane karl = new Opilane("Karl");
-        ita20.add(henri);
-        ita20.add(karl);
+        mati.suurendaKaal();
+        System.out.println(mati.getNimi() + " on " + mati.getPikkus() + "m pikk ja kaalub " + mati.getMass() + " kg");
 
-        oppetoo(teemad, ita20, opetaja);
+        mati.suurendaKaal(5.0);
+        System.out.println(mati.getNimi() + " on " + mati.getPikkus() + "m pikk ja kaalub " + mati.getMass() + " kg");
+        System.out.printf("kmi = %.2f\n", mati.kmi());
 
-        teadmisteKontroll(ita20);
-        henri.unusta("Kapseldus");
-        teadmisteKontroll(ita20);
-        henri.opib("Kapseldus");
-        teadmisteKontroll(ita20);
-    }
-
-    public static void teadmisteKontroll(ArrayList<Opilane> grupp){
-        for (Opilane opilane : grupp){
-            System.out.println("Opilane " + opilane.getNimi() + " teadmised: ");
-            for (String teadmine : opilane.getTeadmised()){
-                System.out.println(teadmine);
-            }
-            System.out.println();
-        }
-    }
-
-    public static void oppetoo(ArrayList<String> teemad, ArrayList<Opilane> grupp, Opetaja opetaja){
-        for (String teema : teemad){
-            for (Opilane opilane : grupp){
-                opetaja.opetab(opilane, teema);
-            }
-        }
+        mati.normaalKaal();
+        System.out.println(mati.getNimi() + " on " + mati.getPikkus() + "m pikk ja kaalub " + mati.getMass() + " kg");
+        System.out.printf("kmi = %.2f\n", mati.kmi());
     }
 }
